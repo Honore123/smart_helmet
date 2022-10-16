@@ -35,13 +35,22 @@
             <h4>Monitor Site's data</h4>
         </div>
         <div class="col px-0 text-center">
-            <button class="btn btn-danger rounded-0 border-0">
+            @if($notify->status == 0)
+            <a href="{{route('notify.send',1)}}" class="btn btn-danger rounded-0 border-0">
                 Send Alert
-            </button>
+            </a>
+            @else
+            <a href="{{route('notify.stop',1)}}" class="btn btn-success rounded-0 border-0">
+                Stop Alert
+            </a>
+            @endif
         </div>
         <div class="col px-0 text-end">
            
         </div>
+    </div>
+    <div class="row py-3">
+        @include('notification')
     </div>
     <div class="row" style="height: 50vh">
         <div class="col-md-12 card card-body border-0 rounded-0 shadow">

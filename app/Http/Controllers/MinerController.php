@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Miner;
+use App\Models\Notify;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class MinerController extends Controller
     {
         return view('dashboard', [
             'miners' => User::query()->where('user_type', 'miner')->get(),
+            'notify' => Notify::query()->first(),
         ]);
     }
     public function add()

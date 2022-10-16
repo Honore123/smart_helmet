@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notify;
 use App\Models\Station;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,7 @@ class StationController extends Controller
     {
         return view('site_data', [
             "siteData" => Station::query()->latest('id')->first(),
+            'notify' => Notify::query()->first(),
         ]);
     }
 

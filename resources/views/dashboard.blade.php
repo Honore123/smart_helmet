@@ -31,9 +31,15 @@
             <h4>Miner</h4>
         </div>
         <div class="col px-0 text-center">
-            <button class="btn btn-danger rounded-0 border-0">
+            @if($notify->status == 0)
+            <a href="{{route('notify.send',1)}}" class="btn btn-danger rounded-0 border-0">
                 Send Alert
-            </button>
+            </a>
+            @else
+            <a href="{{route('notify.stop',1)}}" class="btn btn-success rounded-0 border-0">
+                Stop Alert
+            </a>
+            @endif
         </div>
         <div class="col px-0 text-end">
             <a class="btn btn-success btn-green-bg rounded-0 border-0" href="{{route('add_miner')}}">

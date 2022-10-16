@@ -32,6 +32,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [StationController::class, 'index'])->name('site_data');
     });
 
+    Route::prefix('notify')->group(function () {
+        Route::get('send/alert/{notify}', [NotifyController::class, 'sendAlert'])->name('notify.send');
+        Route::get('stop/alert/{notify}', [NotifyController::class, 'stopAlert'])->name('notify.stop');
+    });
+
     Route::prefix('helmet')->group(function () {
         Route::get('/{miner}', [HelmetController::class, 'index'])->name('miner_data');
     });
