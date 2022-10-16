@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Miner;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MinerController extends Controller
@@ -10,7 +11,7 @@ class MinerController extends Controller
     public function index()
     {
         return view('dashboard', [
-            'miners' => Miner::all()
+            'miners' => User::query()->where('user_type', 'miner')->get(),
         ]);
     }
     public function add()
@@ -26,8 +27,9 @@ class MinerController extends Controller
             'email'=>['email','required'],
             'phone_number'=>['required'],
         ]);
-
-        Miner::create($data);
+        $data['user_type'] = 'miner';
+        $data['name'] = $data['firstname'] . ' ' . $data['lastname'];
+        User::create($data);
 
         return redirect()->route('dashboard')->with('success', 'Miner Added Successfully!');
     }

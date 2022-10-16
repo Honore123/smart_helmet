@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('helmets', function (Blueprint $table) {
             $table->id();
-            $table->integer('carbon_doixide');
-            $table->integer('carbon_monoxide');
-            $table->integer('helmet_temperature');
-            $table->integer('helmet_humidity');
-            $table->integer('helmet_alert');
+            $table->foreignId('miner_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete(null);
+            $table->integer('carbon_doixide')->default(0);
+            $table->integer('carbon_monoxide')->default(0);
+            $table->integer('helmet_temperature')->default(0);
+            $table->integer('helmet_humidity')->default(0);
+            $table->integer('helmet_alert')->default(0);
             $table->timestamps();
         });
     }

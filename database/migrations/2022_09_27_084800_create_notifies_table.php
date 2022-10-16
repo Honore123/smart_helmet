@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('notifies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('station_id')->references('id')->on('stations')->onUpdate('CASCADE')->onDelete(null);
             $table->integer('status');
             $table->timestamps();
         });

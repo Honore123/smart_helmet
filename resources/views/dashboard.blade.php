@@ -52,8 +52,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
+                            <th>Names</th>
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>Reg Date</th>
@@ -66,8 +65,7 @@
                         @foreach($miners as $miner)
                         <tr>
                             <td>{{$loop->iteration++}}</td>
-                            <td>{{$miner->firstname}}</td>
-                            <td>{{$miner->lastname}}</td>
+                            <td>{{$miner->name}}</td>
                             <td>{{$miner->email}}</td>
                             <td>{{$miner->phone_number}}</td>
                             <td>{{$miner->created_at}}</td>

@@ -17,6 +17,7 @@ class NotifySeeder extends Seeder
     {
         Notify::firstOrCreate([
             'status' => 0,
+            'station_id' => 1,
         ]);
     }
 }

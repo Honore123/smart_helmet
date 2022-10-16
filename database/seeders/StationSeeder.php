@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Station;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
-class UserSeeder extends Seeder
+class StationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,12 +16,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-       User::firstOrCreate([
-            'name'=>'Administrator',
-            'email'=>'admin@smart.rw',
-            'user_type' => 'admin',
-            'password'=>Hash::make('password')
+        Station::firstOrCreate([
+            'manager_id' => 1,
+
         ]);
-       
     }
 }
