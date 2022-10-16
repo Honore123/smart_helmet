@@ -53,7 +53,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-                    <input type="phone" class="form-control" id="phone_number" name="phone_number" value="{{$miner->phone_number}}">
+                    <input type="number" class="form-control" id="phone_number" name="phone_number" value="{{$miner->phone_number}}">
                   </div>
                   <div class="mt-4">
                     <button type="submit" class="w-100 btn btn-secondary btn-green-bg border-0 rounded-0 mb-3">Update</button>
