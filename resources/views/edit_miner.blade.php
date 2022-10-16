@@ -41,11 +41,11 @@
                 @csrf
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Firstname</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname"  value="{{$miner->firstname}}">
+                    <input type="text" class="form-control" id="firstname" name="firstname"  value="{{explode(' ', $miner->name)[0]}}">
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Lastname</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname"  value="{{$miner->lastname}}">
+                    <input type="text" class="form-control" id="lastname" name="lastname"  value="{{explode(' ', $miner->name)[1]}}">
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
