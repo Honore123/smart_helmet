@@ -17,6 +17,7 @@ class StationController extends Controller
     public function deviceData(Request $request)
     {
         Station::create([
+        'manager_id' => $request->manager,
          'carbon_doixide'=> $request->carbon_dioxide,
          'carbon_monoxide'=> $request->carbon_monoxide,
          'helmet_temperature'=> $request->temperature,

@@ -42,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/miner_data/{carbon_dioxide}/{carbon_monoxide}/{temperature}/{humidity}/{alert}/{miner}', [HelmetController::class, 'deviceData']);
-Route::get('/site_data/{carbon_dioxide}/{carbon_monoxide}/{temperature}/{humidity}', [StationController::class, 'deviceData']);
+Route::get('/site_data/{carbon_dioxide}/{carbon_monoxide}/{temperature}/{humidity}/{manager}', [StationController::class, 'deviceData']);
 Route::get('/notify', [NotifyController::class, 'index']);
 
 
