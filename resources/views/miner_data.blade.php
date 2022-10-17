@@ -52,44 +52,44 @@
                 <div class="col d-flex justify-content-center">
                     <div class="progress progress-bar-vertical">
                         <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$minerData->helmet_temperature}}%;">
-                          <span class="sr-only">{{$minerData->helmet_temperature}}%</span>
+                          <span class="sr-only" id="helmetTemperature">{{$minerData->helmet_temperature}}%</span>
                         </div>
                     </div>
                     <div>
-                        <h4><span class="badge bg-primary">{{$minerData->helmet_temperature}}%</span></h4>
+                        <h4><span class="badge bg-primary" id="helmetTemperatureBadge">{{$minerData->helmet_temperature}}%</span></h4>
                         <h6 class="text-primary">Temperature</h6>
                     </div> 
                 </div>
                 <div class="col d-flex justify-content-center">
                     <div class="progress progress-bar-vertical">
                         <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$minerData->carbon_doixide}}%;">
-                          <span class="sr-only">{{$minerData->carbon_doixide}}%</span>
+                          <span class="sr-only" id="carbonDioxide">{{$minerData->carbon_doixide}}%</span>
                         </div>
                     </div>
                     <div>
-                        <h4><span class="badge bg-secondary">{{$minerData->carbon_doixide}}%</span></h4>
+                        <h4><span class="badge bg-secondary" id="carbonDioxideBadge">{{$minerData->carbon_doixide}}%</span></h4>
                         <h6 class="text-secondary">Carbon Dioxide</h6>
                     </div> 
                 </div>
                 <div class="col d-flex justify-content-center">
                     <div class="progress progress-bar-vertical">
                         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$minerData->helmet_humidity}}%;">
-                          <span class="sr-only">{{$minerData->helmet_humidity}}%</span>
+                          <span class="sr-only" id="helmetHumidity">{{$minerData->helmet_humidity}}%</span>
                         </div>
                     </div>
                     <div>
-                        <h4><span class="badge bg-success">{{$minerData->helmet_humidity}}%</span></h4>
+                        <h4><span class="badge bg-success" id="helmetHumidityBadge">{{$minerData->helmet_humidity}}%</span></h4>
                         <h6 class="text-success">Humidity</h6>
                     </div> 
                 </div>
                 <div class="col d-flex justify-content-center">
                     <div class="progress progress-bar-vertical">
                         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$minerData->carbon_monoxide}}%;">
-                          <span class="sr-only">{{$minerData->carbon_monoxide}}%</span>
+                          <span class="sr-only" id="carbonMonoxide">{{$minerData->carbon_monoxide}}%</span>
                         </div>
                     </div>
                     <div>
-                        <h4><span class="badge bg-danger">{{$minerData->carbon_monoxide}}%</span></h4>
+                        <h4><span class="badge bg-danger" id="carbonMonoxideBadge">{{$minerData->carbon_monoxide}}%</span></h4>
                         <h6 class="text-danger">Carbon Monoxide</h6>
                     </div> 
                 </div>
@@ -100,6 +100,31 @@
 </div>
 @endsection
 @push('scripts')
-   
+<script>
+    setInterval(() => {
+        var url = "{{url('helmet/ajax/data/'.$miner)}}";
+        $.get(url, function(response){
+            //temperature
+            $('#helmetTemperature').text(response.station_temperature + ' %');
+            $('#helmetTemperature').parent().attr('style','height:'+response.helmet_temperature+'%');
+            $('#helmetTemperatureBadge').text(response.station_temperature + ' %');
+
+            //carbon dioxide
+            $('#carbonDioxide').text(response.carbon_doixide + ' %');
+            $('#carbonDioxide').parent().attr('style','height:'+response.carbon_doixide+'%');
+            $('#carbonDioxideBadge').text(response.carbon_doixide + ' %');
+
+            //station humidity
+            $('#helmetHumidity').text(response.station_humidity + ' %');
+            $('#helmetHumidity').parent().attr('style','height:'+response.helmet_humidity+'%');
+            $('#helmetHumidityBadge').text(response.station_humidity + ' %');
+
+            //carbon monoxide
+            $('#carbonMonoxide').text(response.carbon_monoxide + ' %');
+            $('#carbonMonoxide').parent().attr('style','height:'+response.carbon_monoxide+'%');
+            $('#carbonMonoxideBadge').text(response.carbon_monoxide + ' %');
+        })
+    }, 2000);
+   </script>
 @endpush
     

@@ -58,45 +58,45 @@
             <div class="row justify-content-center" style="height: 70vh">
                 <div class="col d-flex justify-content-center">
                     <div class="progress progress-bar-vertical">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$siteData->helmet_temperature}}%;">
-                          <span class="sr-only">{{$siteData->helmet_temperature}}%</span>
+                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$siteData->station_temperature}}%;">
+                          <span class="sr-only" id="stationTemperature">{{$siteData->station_temperature}}%</span>
                         </div>
                     </div>
                     <div>
-                        <h4><span class="badge bg-primary">{{$siteData->helmet_temperature}}%</span></h4>
+                        <h4><span class="badge bg-primary" id="stationTemperatureBadge">{{$siteData->station_temperature}}%</span></h4>
                         <h6 class="text-primary">Temperature</h6>
                     </div> 
                 </div>
                 <div class="col d-flex justify-content-center">
                     <div class="progress progress-bar-vertical">
                         <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$siteData->carbon_doixide}}%;">
-                          <span class="sr-only">{{$siteData->carbon_doixide}}%</span>
+                          <span class="sr-only" id="carbonDioxide">{{$siteData->carbon_doixide}}%</span>
                         </div>
                     </div>
                     <div>
-                        <h4><span class="badge bg-secondary">{{$siteData->carbon_doixide}}%</span></h4>
+                        <h4><span class="badge bg-secondary" id="carbonDioxideBadge">{{$siteData->carbon_doixide}}%</span></h4>
                         <h6 class="text-secondary">Carbon Dioxide</h6>
                     </div> 
                 </div>
                 <div class="col d-flex justify-content-center">
                     <div class="progress progress-bar-vertical">
-                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$siteData->helmet_humidity}}%;">
-                          <span class="sr-only">{{$siteData->helmet_humidity}}%</span>
+                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$siteData->station_humidity}}%;">
+                          <span class="sr-only" id="stationHumidity">{{$siteData->station_humidity}}%</span>
                         </div>
                     </div>
                     <div>
-                        <h4><span class="badge bg-success">{{$siteData->helmet_humidity}}%</span></h4>
+                        <h4><span class="badge bg-success" id="stationHumidityBadge">{{$siteData->station_humidity}}%</span></h4>
                         <h6 class="text-success">Humidity</h6>
                     </div> 
                 </div>
                 <div class="col d-flex justify-content-center">
                     <div class="progress progress-bar-vertical">
                         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: {{$siteData->carbon_monoxide}}%;">
-                          <span class="sr-only">{{$siteData->carbon_monoxide}}%</span>
+                          <span class="sr-only" id="carbonMonoxide">{{$siteData->carbon_monoxide}}%</span>
                         </div>
                     </div>
                     <div>
-                        <h4><span class="badge bg-danger">{{$siteData->carbon_monoxide}}%</span></h4>
+                        <h4><span class="badge bg-danger" id="carbonMonoxideBadge">{{$siteData->carbon_monoxide}}%</span></h4>
                         <h6 class="text-danger">Carbon Monoxide</h6>
                     </div> 
                 </div>
@@ -107,6 +107,31 @@
 </div>
 @endsection
 @push('scripts')
-   
+   <script>
+    setInterval(() => {
+        var url = "{{url('site/ajax/data/')}}";
+        $.get(url, function(response){
+            //temperature
+            $('#stationTemperature').text(response.station_temperature + ' %');
+            $('#stationTemperature').parent().attr('style','height:'+response.station_temperature+'%');
+            $('#stationTemperatureBadge').text(response.station_temperature + ' %');
+
+            //carbon dioxide
+            $('#carbonDioxide').text(response.carbon_doixide + ' %');
+            $('#carbonDioxide').parent().attr('style','height:'+response.carbon_doixide+'%');
+            $('#carbonDioxideBadge').text(response.carbon_doixide + ' %');
+
+            //station humidity
+            $('#stationHumidity').text(response.station_humidity + ' %');
+            $('#stationHumidity').parent().attr('style','height:'+response.station_humidity+'%');
+            $('#stationHumidityBadge').text(response.station_humidity + ' %');
+
+            //carbon monoxide
+            $('#carbonMonoxide').text(response.carbon_monoxide + ' %');
+            $('#carbonMonoxide').parent().attr('style','height:'+response.carbon_monoxide+'%');
+            $('#carbonMonoxideBadge').text(response.carbon_monoxide + ' %');
+        })
+    }, 2000);
+   </script>
 @endpush
     

@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/site')->group(function () {
         Route::get('/', [StationController::class, 'index'])->name('site_data');
+        Route::get('/ajax/data/', [StationController::class, 'ajax'])->name('site.ajax');
     });
 
     Route::prefix('notify')->group(function () {
@@ -39,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('helmet')->group(function () {
         Route::get('/{miner}', [HelmetController::class, 'index'])->name('miner_data');
+        Route::get('/ajax/data/{miner}',[HelmetController::class, 'ajax'])->name('miner.ajax');
     });
     
     Route::get('/change_password', function () {

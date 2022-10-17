@@ -13,6 +13,7 @@ class HelmetController extends Controller
         if($data) {
             return view('miner_data', [
                 'minerData' => $data,
+                'miner' => $miner
             ]);
         }
         return redirect()->route('dashboard')->with('error', 'There is no data for this miner');
@@ -21,6 +22,12 @@ class HelmetController extends Controller
     public function add()
     {
         return view('add_miner');
+    }
+
+    public function ajax($miner) {
+        $data = Helmet::query()->where('miner_id',$miner)->latest('id')->first();
+
+        return response()->json($data);
     }
 
     public function deviceData(Request $request) {

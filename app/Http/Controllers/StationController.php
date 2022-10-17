@@ -28,4 +28,9 @@ class StationController extends Controller
  
         echo "Data Added";
     }
+    public function ajax() {
+        $data = Station::query()->latest('id')->first();
+
+        return response()->json($data);
+    }
 }

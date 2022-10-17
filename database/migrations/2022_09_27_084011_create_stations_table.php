@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('manager_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete(null);
             $table->integer('carbon_doixide')->default(0);
             $table->integer('carbon_monoxide')->default(0);
-            $table->integer('helmet_temperature')->default(0);
-            $table->integer('helmet_humidity')->default(0);
+            $table->integer('station_temperature')->default(0);
+            $table->integer('station_humidity')->default(0);
             $table->timestamps();
         });
     }
