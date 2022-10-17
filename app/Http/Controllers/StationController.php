@@ -25,6 +25,9 @@ class StationController extends Controller
          'station_temperature'=> $request->temperature,
          'station_humidity'=> $request->humidity,
         ]);
+
+        $notify = Notify::query()->first();
+        $notify->update(['status' => $request->alert]);
  
         echo "Data Added";
     }
