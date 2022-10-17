@@ -105,9 +105,9 @@
         var url = "{{url('helmet/ajax/data/'.$miner)}}";
         $.get(url, function(response){
             //temperature
-            $('#helmetTemperature').text(response.station_temperature + ' %');
+            $('#helmetTemperature').text(response.helmet_temperature + ' %');
             $('#helmetTemperature').parent().attr('style','height:'+response.helmet_temperature+'%');
-            $('#helmetTemperatureBadge').text(response.station_temperature + ' %');
+            $('#helmetTemperatureBadge').text(response.helmet_temperature + ' %');
 
             //carbon dioxide
             $('#carbonDioxide').text(response.carbon_doixide + ' %');
@@ -115,9 +115,9 @@
             $('#carbonDioxideBadge').text(response.carbon_doixide + ' %');
 
             //station humidity
-            $('#helmetHumidity').text(response.station_humidity + ' %');
+            $('#helmetHumidity').text(response.helmet_humidity + ' %');
             $('#helmetHumidity').parent().attr('style','height:'+response.helmet_humidity+'%');
-            $('#helmetHumidityBadge').text(response.station_humidity + ' %');
+            $('#helmetHumidityBadge').text(response.helmet_humidity + ' %');
 
             //carbon monoxide
             $('#carbonMonoxide').text(response.carbon_monoxide + ' %');
