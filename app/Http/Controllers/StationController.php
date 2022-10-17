@@ -22,8 +22,8 @@ class StationController extends Controller
         'manager_id' => $request->manager,
          'carbon_doixide'=> $request->carbon_dioxide,
          'carbon_monoxide'=> $request->carbon_monoxide,
-         'helmet_temperature'=> $request->temperature,
-         'helmet_humidity'=> $request->humidity,
+         'station_temperature'=> $request->temperature,
+         'station_humidity'=> $request->humidity,
         ]);
  
         echo "Data Added";
