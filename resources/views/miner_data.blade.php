@@ -45,6 +45,13 @@
             </a>
         </div>
     </div>
+    <div class="alert alert-danger alert-dismissible d-none">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <h5>
+            <i class="icon fas fa-ban"></i>
+            <span id="minerNotification">Miner is in danger</span>
+        </h5>
+    </div>
     <div class="row" style="height: 50vh">
         <div class="col-md-12 card card-body border-0 rounded-0 shadow">
             <h5 class="card-title pb-4">Master Miner Statistics</h5>
@@ -123,6 +130,12 @@
             $('#carbonMonoxide').text(response.carbon_monoxide + ' %');
             $('#carbonMonoxide').parent().attr('style','height:'+response.carbon_monoxide+'%');
             $('#carbonMonoxideBadge').text(response.carbon_monoxide + ' %');
+
+            if(response.helmet_alert == 1){
+                $('#minerNotification').parent().parent().removeClass('d-none');
+            }else {
+                $('#minerNotification').parent().parent().addClass('d-none');
+            }
         })
     }, 2000);
    </script>
