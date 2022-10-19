@@ -82,8 +82,10 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                       <li><a class="dropdown-item" href="{{route('miner_data',$miner->id)}}">View Data</a></li>
+                                      @if(auth()->user()->user_type == 'admin')
                                       <li><a class="dropdown-item" href="{{route('miner.edit', $miner->id)}}">Edit</a></li>
                                       <li><a class="dropdown-item" href="#">Remove</a></li>
+                                      @endif
                                     </ul>
                                   </div>
                             </td>

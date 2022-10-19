@@ -12,9 +12,11 @@
           <li class="nav-item px-4">
             <a class="nav-link {{setActive('site')}}" href="{{route('site_data')}}">Site Data</a>
           </li>
+          @if(auth()->user()->user_type == 'admin')
           <li class="nav-item px-4">
             <a class="nav-link {{setActive('site/managers')}}" href="{{route('site.managers')}}">Managers</a>
           </li>
+          @endif
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
