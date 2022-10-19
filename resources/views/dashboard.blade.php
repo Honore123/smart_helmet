@@ -84,7 +84,11 @@
                                       <li><a class="dropdown-item" href="{{route('miner_data',$miner->id)}}">View Data</a></li>
                                       @if(auth()->user()->user_type == 'admin')
                                       <li><a class="dropdown-item" href="{{route('miner.edit', $miner->id)}}">Edit</a></li>
-                                      <li><a class="dropdown-item" href="#">Remove</a></li>
+                                      <form action="{{route('miner.delete', $miner->id)}}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <li><button class="dropdown-item" type="submit">Remove</button></li>
+                                      </form>
                                       @endif
                                     </ul>
                                   </div>

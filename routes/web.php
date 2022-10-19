@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{miner}', [MinerController::class, 'edit'])->name('miner.edit');
         Route::post('/store', [MinerController::class, 'store'])->name('miner.store');
         Route::put('/{miner}', [MinerController::class, 'update'])->name('miner.update');
+        Route::delete('/{miner}', [MinerController::class, 'delete'])->name('miner.delete');
     });
 
     Route::prefix('/site')->group(function () {

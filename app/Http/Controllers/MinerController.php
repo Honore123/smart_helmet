@@ -58,4 +58,10 @@ class MinerController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Miner Updated Successfully!');
     }
+
+    public function delete(User $miner){
+        $miner->delete();
+
+        return redirect()->back()->with('success', 'Miner deleted successfully');
+    }
 }
