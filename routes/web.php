@@ -3,6 +3,7 @@
 use App\Http\Controllers\HelmetController;
 use App\Http\Controllers\MinerController;
 use App\Http\Controllers\NotifyController;
+use App\Http\Controllers\SiteManagerController;
 use App\Http\Controllers\StationController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/site')->group(function () {
         Route::get('/', [StationController::class, 'index'])->name('site_data');
+        Route::get('/managers', [SiteManagerController::class, 'index'])->name('site.managers');
+        Route::get('.managers/add', [SiteManagerController::class,'add'])->name('site.manager.add');
         Route::get('/ajax/data/', [StationController::class, 'ajax'])->name('site.ajax');
+        Route::post('/managers', [SiteManagerController::class, 'store'])->name('site.manager.store');
     });
 
     Route::prefix('notify')->group(function () {

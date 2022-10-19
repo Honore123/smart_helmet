@@ -6,6 +6,7 @@ use App\Models\Miner;
 use App\Models\Notify;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MinerController extends Controller
 {

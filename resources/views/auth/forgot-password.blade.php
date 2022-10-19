@@ -2,7 +2,8 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
+                <h1 class="" style="font-weight: bold; font-size: 1.5em">Smart Helmet Monitoring System</h1>
             </a>
         </x-slot>
 

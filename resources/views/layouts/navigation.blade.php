@@ -12,7 +12,9 @@
           <li class="nav-item px-4">
             <a class="nav-link {{setActive('site')}}" href="{{route('site_data')}}">Site Data</a>
           </li>
-         
+          <li class="nav-item px-4">
+            <a class="nav-link {{setActive('site/managers')}}" href="{{route('site.managers')}}">Managers</a>
+          </li>
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
