@@ -66,15 +66,15 @@
                             <td>{{$manager->name}}</td>
                             <td>{{$manager->email}}</td>
                             <td>{{$manager->phone_number}}</td>
-                            <td>{{$miner->created_at}}</td>
+                            <td>{{$manager->created_at}}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-green-bg rounded-0 border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       Action
                                     </button>
                                     <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="{{route('miner_data',$miner->id)}}">View Data</a></li>
-                                      <li><a class="dropdown-item" href="{{route('miner.edit', $miner->id)}}">Edit</a></li>
+                                      <li><a class="dropdown-item" href="{{route('miner_data',$manager->id)}}">View Data</a></li>
+                                      <li><a class="dropdown-item" href="{{route('miner.edit', $manager->id)}}">Edit</a></li>
                                       <li><a class="dropdown-item" href="#">Remove</a></li>
                                     </ul>
                                   </div>
