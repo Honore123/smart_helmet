@@ -3,6 +3,7 @@
 use App\Http\Controllers\HelmetController;
 use App\Http\Controllers\MinerController;
 use App\Http\Controllers\NotifyController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SiteManagerController;
 use App\Http\Controllers\StationController;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,10 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/{miner}', [MinerController::class, 'update'])->name('miner.update');
         Route::delete('/{miner}', [MinerController::class, 'delete'])->name('miner.delete');
     });
-
+    Route::prefix('report')->group(function() {
+        Route::get('', [ReportController::class, 'index'])->name('report.index');
+        Route::get('report/data', [ReportController::class, 'report'])->name('report.fetch');
+    });
     Route::prefix('/site')->group(function () {
         Route::get('/', [StationController::class, 'index'])->name('site_data');
         Route::get('/managers', [SiteManagerController::class, 'index'])->name('site.managers');

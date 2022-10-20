@@ -17,6 +17,11 @@
             <a class="nav-link {{setActive('site/managers')}}" href="{{route('site.managers')}}">Managers</a>
           </li>
           @endif
+          @if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'manager')
+          <li class="nav-item px-4">
+            <a class="nav-link {{setActive('report')}} {{setActive('report/*')}}" href="{{route('report.index')}}">Report</a>
+          </li>
+          @endif
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
