@@ -32,4 +32,10 @@ class SiteManagerController extends Controller
 
         return redirect()->route('site.managers')->with('success', 'Manager Added Successfully!');
     }
+
+    public function destroy(User $manager) {
+        $manager->delete();
+
+        return redirect()->back()->with('success', 'Manager deleted Successfully!');        
+    }
 }

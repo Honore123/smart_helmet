@@ -73,9 +73,12 @@
                                       Action
                                     </button>
                                     <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="{{route('miner_data',$manager->id)}}">View Data</a></li>
                                       <li><a class="dropdown-item" href="{{route('miner.edit', $manager->id)}}">Edit</a></li>
-                                      <li><a class="dropdown-item" href="#">Remove</a></li>
+                                      <form action="{{route('site.manager.delete', $manager->id)}}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <li><button class="dropdown-item" type="submit">Remove</button></li>
+                                      </form>
                                     </ul>
                                   </div>
                             </td>

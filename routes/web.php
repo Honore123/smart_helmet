@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('.managers/add', [SiteManagerController::class,'add'])->name('site.manager.add');
         Route::get('/ajax/data/', [StationController::class, 'ajax'])->name('site.ajax');
         Route::post('/managers', [SiteManagerController::class, 'store'])->name('site.manager.store');
+        Route::delete('/managers/{manager}', [SiteManagerController::class, 'destroy'])->name('site.manager.delete');
     });
 
     Route::prefix('notify')->group(function () {

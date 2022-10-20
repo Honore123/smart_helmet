@@ -41,9 +41,9 @@
             <label for="staticEmail2" class="visually-hidden">Type</label>
             <select name="report_type" class="form-control h-100" id="reportType">
                 <option value="">~~SELECT TYPE~~</option>
-                <option value="site" {{$report == 'site' ? 'selected' : ''}}>Site data</option>
+                <option value="site" {{isset($report) ? $report == 'site' ? 'selected' : '' : ''}}>Site data</option>
                 @forelse($miners as $miner)
-                <option value="{{$miner->id}}" {{$report == $miner->id ? 'selected' : ''}}>{{$miner->name}}'s data</option>
+                <option value="{{$miner->id}}" {{isset($report) ? $report == $miner->id ? 'selected' : '' : ''}}>{{$miner->name}}'s data</option>
                 @empty
                 <option value="" disabled>No Miner</option>
                 @endforelse
