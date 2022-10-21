@@ -25,11 +25,11 @@
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle {{setActive('change_password')}}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle {{setActive('change_password')}} {{setActive('change_password/*')}}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {{Auth()->user()->name}}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-light">
-                  <li><a class="dropdown-item" href="{{route('change_password')}}">Change Password</a></li>
+                  <li><a class="dropdown-item" href="{{route('user.index')}}">Change Password</a></li>
                   <form action="{{route('logout')}}" method="POST">
                     @csrf
                     <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a></li>

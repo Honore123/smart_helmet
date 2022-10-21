@@ -6,6 +6,7 @@ use App\Http\Controllers\NotifyController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SiteManagerController;
 use App\Http\Controllers\StationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,9 +54,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/ajax/data/{miner}',[HelmetController::class, 'ajax'])->name('miner.ajax');
     });
     
-    Route::get('/change_password', function () {
-        return view('change_password');
-    })->name('change_password');
+    Route::prefix('/change_password')->group(function() {
+        Route::get('', [UserController::class, 'index'])->name('user.index');
+        Route::put('{user}', [UserController::class, 'update'])->name('user.update');
+    });
 });
 
 Route::get('/miner_data/{carbon_dioxide}/{carbon_monoxide}/{temperature}/{humidity}/{alert}/{miner}', [HelmetController::class, 'deviceData']);
